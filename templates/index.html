@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Kółko i krzyżyk</h1>
+        {% if message %}
+            <div class="message">{{ message }}</div>
+        {% endif %}
+        <div class="board">
+            {% for i in range(9) %}
+                <a href="{{ url_for('move', cell=i) }}" class="cell">{{ board[i] }}</a>
+            {% endfor %}
+        </div>
+        <a href="{{ url_for('restart') }}" class="button">Restart</a>
+    </div>
+</body>
+</html>
